@@ -47,11 +47,6 @@
             <stringProp name="Argument.value">1.0.0</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="deviceId" elementType="Argument">
-            <stringProp name="Argument.name">deviceId</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="userType" elementType="Argument">
             <stringProp name="Argument.name">userType</stringProp>
             <stringProp name="Argument.value">DOC_58601</stringProp>
@@ -59,7 +54,7 @@
           </elementProp>
           <elementProp name="userValue" elementType="Argument">
             <stringProp name="Argument.name">userValue</stringProp>
-            <stringProp name="Argument.value">784397</stringProp>
+            <stringProp name="Argument.value">589811</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="password" elementType="Argument">
@@ -67,209 +62,24 @@
             <stringProp name="Argument.value">Sudameris1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="account_number" elementType="Argument">
-            <stringProp name="Argument.name">account_number</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="account_branch" elementType="Argument">
-            <stringProp name="Argument.name">account_branch</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="account_modulus" elementType="Argument">
-            <stringProp name="Argument.name">account_modulus</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="account_currency" elementType="Argument">
-            <stringProp name="Argument.name">account_currency</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_account_number" elementType="Argument">
-            <stringProp name="Argument.name">loan_account_number</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_currency" elementType="Argument">
-            <stringProp name="Argument.name">loan_currency</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_branch" elementType="Argument">
-            <stringProp name="Argument.name">loan_branch</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_modulus" elementType="Argument">
-            <stringProp name="Argument.name">loan_modulus</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_operation_number" elementType="Argument">
-            <stringProp name="Argument.name">loan_operation_number</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_operation_type" elementType="Argument">
-            <stringProp name="Argument.name">loan_operation_type</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_installment_id" elementType="Argument">
-            <stringProp name="Argument.name">loan_installment_id</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="loan_installment_amount" elementType="Argument">
-            <stringProp name="Argument.name">loan_installment_amount</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="numero_operacion" elementType="Argument">
-            <stringProp name="Argument.name">numero_operacion</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="account_available_balance" elementType="Argument">
-            <stringProp name="Argument.name">account_available_balance</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="account_accounting_balance" elementType="Argument">
-            <stringProp name="Argument.name">account_accounting_balance</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="card_payment_type" elementType="Argument">
-            <stringProp name="Argument.name">card_payment_type</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="credit_card_total_debt" elementType="Argument">
-            <stringProp name="Argument.name">credit_card_total_debt</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="credit_card_number" elementType="Argument">
-            <stringProp name="Argument.name">credit_card_number</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="ssign" elementType="Argument">
-            <stringProp name="Argument.name">ssign</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="tstamp" elementType="Argument">
-            <stringProp name="Argument.name">tstamp</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="X-RshkMichi-AccessToken" elementType="Argument">
-            <stringProp name="Argument.name">X-RshkMichi-AccessToken</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="tokenValue" elementType="Argument">
             <stringProp name="Argument.name">tokenValue</stringProp>
             <stringProp name="Argument.value">123456</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="operatorSelected" elementType="Argument">
-            <stringProp name="Argument.name">operatorSelected</stringProp>
+          <elementProp name="deviceId" elementType="Argument">
+            <stringProp name="Argument.name">deviceId</stringProp>
             <stringProp name="Argument.value"></stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="amount" elementType="Argument">
-            <stringProp name="Argument.name">amount</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+          <elementProp name="migrationMaxAttempts" elementType="Argument">
+            <stringProp name="Argument.name">migrationMaxAttempts</stringProp>
+            <stringProp name="Argument.value">15</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="card_payment_type" elementType="Argument">
-            <stringProp name="Argument.name">card_payment_type</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="nextAccount" elementType="Argument">
-            <stringProp name="Argument.name">nextAccount</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="cre_otherBank_account_document_number" elementType="Argument">
-            <stringProp name="Argument.name">cre_otherBank_account_document_number</stringProp>
-            <stringProp name="Argument.value">2502883</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="cre_otherBank_account_currency" elementType="Argument">
-            <stringProp name="Argument.name">cre_otherBank_account_currency</stringProp>
-            <stringProp name="Argument.value">6900</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="cre_otherBank_account_number" elementType="Argument">
-            <stringProp name="Argument.name">cre_otherBank_account_number</stringProp>
-            <stringProp name="Argument.value">701598514</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="cre_otherBank_account_denomination" elementType="Argument">
-            <stringProp name="Argument.name">cre_otherBank_account_denomination</stringProp>
-            <stringProp name="Argument.value">Oscar Balmaceda</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="cre_otherBank_account_document_type" elementType="Argument">
-            <stringProp name="Argument.name">cre_otherBank_account_document_type</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="cre_otherBank_account_codeBank" elementType="Argument">
-            <stringProp name="Argument.name">cre_otherBank_account_codeBank</stringProp>
-            <stringProp name="Argument.value">7</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="card_payment_type" elementType="Argument">
-            <stringProp name="Argument.name">card_payment_type</stringProp>
-            <stringProp name="Argument.value">PAGO_TARJETA_TERCEROS</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="credit_card_number" elementType="Argument">
-            <stringProp name="Argument.name">credit_card_number</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="statusLoginUsuario" elementType="Argument">
-            <stringProp name="Argument.name">statusLoginUsuario</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="messageLoginOperador" elementType="Argument">
-            <stringProp name="Argument.name">messageLoginOperador</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="messageCuentasDebito" elementType="Argument">
-            <stringProp name="Argument.name">messageCuentasDebito</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="deb_account_number" elementType="Argument">
-            <stringProp name="Argument.name">deb_account_number</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="deb_account_branch" elementType="Argument">
-            <stringProp name="Argument.name">deb_account_branch</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="deb_account_modulus" elementType="Argument">
-            <stringProp name="Argument.name">deb_account_modulus</stringProp>
-            <stringProp name="Argument.value"></stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="deb_account_currency" elementType="Argument">
-            <stringProp name="Argument.name">deb_account_currency</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+          <elementProp name="migrationDelayMs" elementType="Argument">
+            <stringProp name="Argument.name">migrationDelayMs</stringProp>
+            <stringProp name="Argument.value">1000</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -357,7 +167,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.NoSuchAlgorithmException;
 
 String deviceId = vars.get(&quot;deviceId&quot;);
-if (deviceId.equals(&quot;&quot;) || deviceId == null) {
+if (deviceId == null || deviceId.equals(&quot;&quot;)) {
 	deviceId = UUID.randomUUID().toString();
 }
 TimeZone tz = TimeZone.getTimeZone(&quot;UTC&quot;);
@@ -747,8 +557,8 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">500</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">30</stringProp>
+        <stringProp name="ThreadGroup.num_threads">3</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -1921,8 +1731,8 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">50</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -2410,13 +2220,6 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">deb_account_number;deb_account_branch;deb_account_modulus;deb_account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
             <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
               <boolProp name="displayJMeterProperties">false</boolProp>
               <boolProp name="displayJMeterVariables">true</boolProp>
@@ -2525,16 +2328,25 @@ if(nextAccount != null){
             </HeaderManager>
             <hashTree/>
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-              <stringProp name="scriptLanguage">java</stringProp>
+              <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
               <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="script">String account_number = vars.get(&quot;cre_otherBank_account_number&quot;);
+              <stringProp name="script">/*
+String account_number = vars.get(&quot;cre_otherBank_account_number&quot;);
 String cre_otherBank_account_number = account_number.replaceFirst(&quot;^0+(?!$)&quot;, &quot;&quot;);
+*/
 
-vars.put(&quot;cre_otherBank_account_number&quot;, String.valueOf(cre_otherBank_account_number));
-vars.put(&quot;amount&quot;, String.valueOf(&quot;1000&quot;));
-vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));
+
+vars.put(&quot;cre_otherBank_account_document_number&quot;, String.valueOf(&quot;2502883&quot;))
+vars.put(&quot;cre_otherBank_account_currency&quot;, String.valueOf(&quot;6900&quot;))
+vars.put(&quot;cre_otherBank_account_number&quot;, String.valueOf(&quot;701598514&quot;))
+vars.put(&quot;cre_otherBank_account_denomination&quot;, String.valueOf(&quot;Oscar Balmaceda&quot;))
+vars.put(&quot;cre_otherBank_account_document_type&quot;, String.valueOf(&quot;1&quot;))
+vars.put(&quot;cre_otherBank_account_codeBank&quot;, String.valueOf(&quot;7&quot;))
+
+vars.put(&quot;amount&quot;, String.valueOf(&quot;1000&quot;))
+vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;))
 </stringProp>
             </JSR223PreProcessor>
             <hashTree/>
@@ -3426,13 +3238,6 @@ if(codeError == &quot;ERGEN&quot;){
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">deb_account_number;deb_account_branch;deb_account_modulus;deb_account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
             <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
               <boolProp name="displayJMeterProperties">false</boolProp>
               <boolProp name="displayJMeterVariables">true</boolProp>
@@ -3472,82 +3277,6 @@ if(nextAccount != null){
 	vars.put(&quot;deb_account_currency&quot;, String.valueOf(accounts[nextAccount].moneda.codigo));
 }else{
 	log.warn(&quot;CUENTA DEBITO - Sin cuenta en guaranies&quot;)
-	prev.setResponseOK();
-	prev.setStopThread(true);
-}</stringProp>
-            </JSR223PostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuentas Debito" enabled="false">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="funcionalidad" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">EB_PAGOS_TARJETA_CREDITO_MISMO_BANCO</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">funcionalidad</stringProp>
-                </elementProp>
-                <elementProp name="accion" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">DEBITO</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">accion</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">account_number;account_branch;account_modulus;account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-              <stringProp name="scriptLanguage">groovy</stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="script">def numCuenta = vars.get(&quot;account_number&quot;);
-
-if(numCuenta == &quot;notFound&quot;){
-	log.warn(&quot;CUENTA DEBITO - Error: SIN CUENTA DEBITO&quot;);
 	prev.setResponseOK();
 	prev.setStopThread(true);
 }</stringProp>
@@ -3835,8 +3564,8 @@ if(codeError == &quot;NOCTC&quot;){
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">180</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -4320,20 +4049,6 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">deb_account_number;deb_account_branch;deb_account_modulus;deb_account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
             <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
@@ -4371,131 +4086,12 @@ if(nextAccount != null){
 }</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuentas Debito" enabled="false">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="funcionalidad" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">EB_PAGO_PRESTAMOS_DEBITO_EN_CUENTA</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">funcionalidad</stringProp>
-                </elementProp>
-                <elementProp name="accion" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">DEBITO</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">accion</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">account_number;account_branch;account_modulus;account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
             <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
               <boolProp name="displayJMeterProperties">false</boolProp>
               <boolProp name="displayJMeterVariables">true</boolProp>
               <boolProp name="displaySamplerProperties">true</boolProp>
               <boolProp name="displaySystemProperties">false</boolProp>
             </DebugPostProcessor>
-            <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-              <stringProp name="scriptLanguage">groovy</stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="script">import groovy.json.JsonSlurper
-
-//def deb_account_number = vars.get(&quot;deb_account_number&quot;)
-//def deb_account_branch = vars.get(&quot;deb_account_branch&quot;)
-//def deb_account_modulus = vars.get(&quot;deb_account_modulus&quot;)
-//def deb_account_currency = vars.get(&quot;deb_account_currency&quot;)
-
-def jsonString = prev.getResponseDataAsString()
-def json = new JsonSlurper().parseText(jsonString)
-def accounts = json.listaCuentas
-def j = null
-//validar que la lista cuenta no venga vacia
-
-if(accounts != null &amp;&amp; accounts.size() &gt; 0){
-	for (int i = 0; i &lt; accounts.size(); i++) {
-		if (accounts[i].moneda.codigo == 6900){
-			log.warn(String.valueOf(accounts[i].moneda.codigo))
-			j = i;
-			break;
-		}
-	}
-}else{
-	vars.put(&quot;account_number&quot;, &quot;notFound&quot;);
-	vars.put(&quot;account_branch&quot;, &quot;notFound&quot;);
-	vars.put(&quot;account_modulus&quot;, &quot;notFound&quot;);
-	vars.put(&quot;account_currency&quot;, &quot;notFound&quot;);
-	vars.put(&quot;messageCuentasDebito&quot;, json.message);
-	log.warn(&quot;CUENTA DEBIT - Error: &quot; + vars.get(&quot;messageCuentasDebito&quot;));
-	prev.setResponseOK();
-	prev.setStopThread(true);
-}
-
-if(j != null){
-	vars.put(&quot;account_number&quot;, String.valueOf(accounts[j].numeroCuenta));
-	vars.put(&quot;account_branch&quot;, String.valueOf(accounts[j].sucursal));
-	vars.put(&quot;account_modulus&quot;, String.valueOf(accounts[j].modulo));
-	vars.put(&quot;account_currency&quot;, String.valueOf(accounts[j].moneda.codigo));
-}else{
-	vars.put(&quot;account_number&quot;, &quot;notFound&quot;);
-	vars.put(&quot;account_branch&quot;, &quot;notFound&quot;);
-	vars.put(&quot;account_modulus&quot;, &quot;notFound&quot;);
-	vars.put(&quot;account_currency&quot;, &quot;notFound&quot;);
-	prev.setResponseOK();
-	prev.setStopThread(true);
-}
-
-log.info(&quot;CUENTA DEBIT - Numero de cuenta: &quot; + vars.get(&quot;account_number&quot;));
-log.info(&quot;CUENTA DEBIT - Branch: &quot; + vars.get(&quot;account_branch&quot;));
-log.info(&quot;CUENTA DEBIT - Modulo: &quot; + vars.get(&quot;account_modulus&quot;));
-log.info(&quot;CUENTA DEBIT - Currency: &quot; + vars.get(&quot;account_currency&quot;));
-
-
-
-
-
-
-</stringProp>
-            </JSR223PostProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Prestamos" enabled="true">
@@ -4551,13 +4147,6 @@ log.info(&quot;CUENTA DEBIT - Currency: &quot; + vars.get(&quot;account_currency
                 </elementProp>
               </collectionProp>
             </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">loan_account_number;loan_currency;loan_branch;loan_modulus;loan_operation_number;loan_operation_type</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.prestamoList[0].numeroCuenta;$.prestamoList[0].moneda.codigo;$.prestamoList[0].sucursal;$.prestamoList[0].modulo;$.prestamoList[0].operacion.codigo;$.prestamoList[0].operacion.tipoOperacion</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
             <hashTree/>
             <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
               <boolProp name="displayJMeterProperties">false</boolProp>
@@ -5072,8 +4661,8 @@ if(codeError == &quot;NOCTC&quot;){
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">200</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -5557,20 +5146,6 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
               </collectionProp>
             </HeaderManager>
             <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">deb_account_number;deb_account_branch;deb_account_modulus;deb_account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
             <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
@@ -5607,126 +5182,12 @@ if(nextAccount != null){
 }</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuentas Debito" enabled="false">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="funcionalidad" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">EB_PAGOS_TARJETA_CREDITO_MISMO_BANCO</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">funcionalidad</stringProp>
-                </elementProp>
-                <elementProp name="accion" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">DEBITO</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">accion</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-              <stringProp name="JSONPostProcessor.referenceNames">account_number;account_branch;account_modulus;account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo;</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
             <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
               <boolProp name="displayJMeterProperties">false</boolProp>
               <boolProp name="displayJMeterVariables">true</boolProp>
               <boolProp name="displaySamplerProperties">true</boolProp>
               <boolProp name="displaySystemProperties">false</boolProp>
             </DebugPostProcessor>
-            <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-              <stringProp name="scriptLanguage">groovy</stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="script">import groovy.json.JsonSlurper
-
-def jsonString = prev.getResponseDataAsString()
-def json = new JsonSlurper().parseText(jsonString)
-def accounts = json.listaCuentas
-def j = null
-//validar que la lista cuenta no venga vacia
-
-if(accounts != null &amp;&amp; accounts.size() &gt; 0){
-	for (int i = 0; i &lt; accounts.size(); i++) {
-		if (accounts[i].moneda.codigo == 6900){
-			log.warn(String.valueOf(accounts[i].moneda.codigo))
-			j = i;
-			break;
-		}
-	}
-}else{
-	vars.put(&quot;deb_account_number&quot;, &quot;notFound&quot;);
-	vars.put(&quot;deb_account_branch&quot;, &quot;notFound&quot;);
-	vars.put(&quot;deb_account_modulus&quot;, &quot;notFound&quot;);
-	vars.put(&quot;deb_account_currency&quot;, &quot;notFound&quot;);
-	vars.put(&quot;messageCuentasDebito&quot;, json.message);
-	log.warn(&quot;CUENTA DEBIT - Error: &quot; + vars.get(&quot;messageCuentasDebito&quot;));
-	prev.setResponseOK();
-	prev.setStopThread(true);
-}
-
-if(j != null){
-	vars.put(&quot;deb_account_number&quot;, String.valueOf(accounts[j].numeroCuenta));
-	vars.put(&quot;deb_account_branch&quot;, String.valueOf(accounts[j].sucursal));
-	vars.put(&quot;deb_account_modulus&quot;, String.valueOf(accounts[j].modulo));
-	vars.put(&quot;deb_account_currency&quot;, String.valueOf(accounts[j].moneda.codigo));
-}else{
-	vars.put(&quot;deb_account_number&quot;, &quot;notFound&quot;);
-	vars.put(&quot;deb_account_branch&quot;, &quot;notFound&quot;);
-	vars.put(&quot;deb_account_modulus&quot;, &quot;notFound&quot;);
-	vars.put(&quot;deb_account_currency&quot;, &quot;notFound&quot;);
-	prev.setResponseOK();
-	prev.setStopThread(true);
-}
-
-log.info(&quot;CUENTA DEBIT - Numero de cuenta: &quot; + vars.get(&quot;deb_account_number&quot;));
-log.info(&quot;CUENTA DEBIT - Branch: &quot; + vars.get(&quot;deb_account_branch&quot;));
-log.info(&quot;CUENTA DEBIT - Modulo: &quot; + vars.get(&quot;deb_account_modulus&quot;));
-log.info(&quot;CUENTA DEBIT - Currency: &quot; + vars.get(&quot;deb_account_currency&quot;));
-
-
-
-
-
-
-</stringProp>
-            </JSR223PostProcessor>
             <hashTree/>
           </hashTree>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Tarjetas Prepagas Propias" enabled="true">
@@ -7011,8 +6472,8 @@ if(codeError == &quot;NOCTC&quot;){
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">600</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -8113,11 +7574,11 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
 </stringProp>
           </JSR223PreProcessor>
           <hashTree/>
-          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
-            <stringProp name="JSONPostProcessor.referenceNames">statusLoginUsuario</stringProp>
-            <stringProp name="JSONPostProcessor.jsonPathExprs">$.session.status</stringProp>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">type;migrationId</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.session.type;$.session.additionalInfo.migrationId</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-            <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound</stringProp>
           </JSONPostProcessor>
           <hashTree/>
           <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
@@ -8130,26 +7591,20 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
 def jsonString = prev.getResponseDataAsString()
 def json = new JsonSlurper().parseText(jsonString)
 def codeError = json.code
-def statusLoginUsuario = json.session.status
-def STATUS_MIGRACION = &quot;&quot;
+def type = vars.get(&quot;type&quot;)
+def STATUS_MIGRACION = &quot;USER_MIGRATION&quot;
 
-if(codeError == &quot;a1001&quot;){
+if(codeError.equals(&quot;a1001&quot;)){
 	log.warn(&quot;Credenciales incorrectas&quot;)
 	prev.setResponseOK()
 	prev.setStopThread(true)
 }
 
-if (statusLoginUsuario == STATUS_MIGRACION){
-	//extraer el migrationId
-	//def migrationId = json.
-	//vars.put(&quot;migrationId&quot;, String.valueOf(migrationId))	
-}
-else {
+if (!type.equals(STATUS_MIGRACION)){
 	log.warn(&quot;Usuario no valido para realizar la migracion&quot;)
 	prev.setResponseOK()
 	prev.setStopThread(true)	
 }
-
 
 vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
@@ -8165,11 +7620,14 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
           </DebugPostProcessor>
           <hashTree/>
         </hashTree>
-        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Migracion" enabled="true"/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Migracion" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
         <hashTree>
-          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop" enabled="true">
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="MigracionLoop" enabled="true">
             <boolProp name="LoopController.continue_forever">true</boolProp>
-            <stringProp name="LoopController.loops">15</stringProp>
+            <stringProp name="LoopController.loops">${migrationMaxAttempts}</stringProp>
           </LoopController>
           <hashTree>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verificar status migracion" enabled="true">
@@ -8208,6 +7666,13 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+                <stringProp name="JSONPostProcessor.referenceNames">migrationStatus</stringProp>
+                <stringProp name="JSONPostProcessor.jsonPathExprs">$.status</stringProp>
+                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+                <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
+              </JSONPostProcessor>
+              <hashTree/>
               <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
                 <stringProp name="scriptLanguage">groovy</stringProp>
                 <stringProp name="parameters"></stringProp>
@@ -8217,13 +7682,21 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
 
 def jsonString = prev.getResponseDataAsString()
 def json = new JsonSlurper().parseText(jsonString)
-// extraer el estado de la migracion
-// def migrationStatus = json.
-// def STATUS_MIGRACION_COMPLETA = &quot;&quot;
+def migrationAttempt = Integer.parseInt(vars.get(&apos;__jm__MigracionLoop__idx&apos;)) + 1
+def migrationMaxAttempts = Integer.parseInt(vars.get(&quot;migrationMaxAttempts&quot;))
+def migrationStatus = vars.get(&quot;migrationStatus&quot;)
+def STATUS_MIGRACION_COMPLETA = &quot;FINISHED&quot;
 
-if (migrationStatus == STATUS_MIGRACION_COMPLETA){
+log.warn(&quot;Intento &quot; + migrationAttempt + &quot; de &quot; + migrationMaxAttempts)
+
+if (migrationStatus.equals(STATUS_MIGRACION_COMPLETA)) {
 	prev.setSuccessful(true)
 	prev.setStopThread(true)
+} else {
+	if (migrationAttempt == migrationMaxAttempts) {
+		prev.setSuccessful(false)
+		prev.setStopThread(true)	
+	}
 }
 </stringProp>
               </JSR223PostProcessor>
@@ -8236,76 +7709,9 @@ if (migrationStatus == STATUS_MIGRACION_COMPLETA){
               </DebugPostProcessor>
               <hashTree/>
             </hashTree>
-          </hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="4s Delay" enabled="true">
-            <stringProp name="ConstantTimer.delay">4000</stringProp>
-          </ConstantTimer>
-          <hashTree/>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verificar status migracion" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/async/status/${migrationId}</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">x-api-key</stringProp>
-                  <stringProp name="Header.value">${X-RshkAP-ApiKey}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-              <stringProp name="scriptLanguage">groovy</stringProp>
-              <stringProp name="parameters"></stringProp>
-              <stringProp name="filename"></stringProp>
-              <stringProp name="cacheKey">true</stringProp>
-              <stringProp name="script">import groovy.json.JsonSlurper
-
-def jsonString = prev.getResponseDataAsString()
-def json = new JsonSlurper().parseText(jsonString)
-// extraer el estado de la migracion
-// def migrationStatus = json.
-// def STATUS_MIGRACION_COMPLETA = &quot;&quot;
-
-if (migrationStatus == STATUS_MIGRACION_COMPLETA){
-	prev.setSuccessful(true)
-	//prev.setStopThread(true)
-} else {
-	prev.setSuccessful(false)
-	//prev.setStopThread(true)
-}
-</stringProp>
-            </JSR223PostProcessor>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Delay" enabled="true">
+              <stringProp name="ConstantTimer.delay">${migrationDelayMs}</stringProp>
+            </ConstantTimer>
             <hashTree/>
           </hashTree>
         </hashTree>
