@@ -4,7 +4,6 @@
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Sudameris" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
         <collectionProp name="Arguments.arguments">
@@ -15,7 +14,7 @@
           </elementProp>
           <elementProp name="url-pds" elementType="Argument">
             <stringProp name="Argument.name">url-pds</stringProp>
-            <stringProp name="Argument.value">test-fu.sudameris.com.py/RshkAPSudameris</stringProp>
+            <stringProp name="Argument.value">test-fu.sudameris.com.py</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="clientSecret" elementType="Argument">
@@ -284,8 +283,8 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">600</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -515,9 +514,22 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));</stringProp>
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -609,7 +621,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api//michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -970,9 +982,22 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));</stringProp>
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -1064,7 +1089,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api//michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2127,9 +2152,22 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));</stringProp>
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -2221,7 +2259,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api//michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -2933,30 +2971,35 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
           </JSONPostProcessor>
           <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
+
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
             <boolProp name="displayJMeterProperties">false</boolProp>
             <boolProp name="displayJMeterVariables">true</boolProp>
             <boolProp name="displaySamplerProperties">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugPostProcessor>
-          <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-            <stringProp name="scriptLanguage">groovy</stringProp>
-            <stringProp name="parameters"></stringProp>
-            <stringProp name="filename"></stringProp>
-            <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
-vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));
-
-if(&quot;${statusLoginUsuario}&quot; != &quot;S2FA_PENDING&quot;){
-	log.warn(&quot;LOGIN USUARIO - Error el STATUS es:&quot; + &quot;${statusLoginUsuario}&quot;)
-	prev.setResponseOK();
-	prev.setStopThread(true);
-}
-
-</stringProp>
-          </JSR223PostProcessor>
           <hashTree/>
         </hashTree>
         <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If 2FA_Pending?" enabled="true">
@@ -3040,7 +3083,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api//michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -4023,9 +4066,22 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));</stringProp>
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -4117,7 +4173,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api//michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -5247,9 +5303,22 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));</stringProp>
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -5341,7 +5410,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol">https</stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api//michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6010,7 +6079,7 @@ if(codeError == &quot;NOCTC&quot;){
         </CSVDataSet>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pago de Servicios" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pago de Servicios - No disponible en test fusion" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -6247,9 +6316,22 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
-log.info(vars.get(&quot;statusLoginUsuario&quot;));</stringProp>
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -6444,7 +6526,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rshkapRest.svc/api/servicios</stringProp>
+          <stringProp name="HTTPSampler.path">RshkAPSudameris/rshkapRest.svc/api/servicios</stringProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6473,8 +6555,19 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
-            <stringProp name="script">vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;140006&quot;));
-vars.put(&quot;service_code_level2&quot;, String.valueOf(&quot;140086&quot;));</stringProp>
+            <stringProp name="script">vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;70001&quot;)) // funciona
+
+/*
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;40004&quot;)) // no funciona
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;30001&quot;))
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;90001&quot;))
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;90004&quot;))
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;90002&quot;))
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;90003&quot;))
+vars.put(&quot;service_code_level1&quot;, String.valueOf(&quot;80001&quot;))
+*/
+
+//vars.put(&quot;service_code_level2&quot;, String.valueOf(&quot;140086&quot;))</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -6592,7 +6685,7 @@ if(nextAccount != null){
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rshkapRest.csv/api/iniciar_pago/${service_code_level1}</stringProp>
+          <stringProp name="HTTPSampler.path">RshkAPSudameris/rshkapRest.svc/api/iniciar_pago/${service_code_level1}</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6611,6 +6704,14 @@ if(nextAccount != null){
               </elementProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkAP-ApiKey</stringProp>
+                <stringProp name="Header.value">${X-RshkAP-ApiKey}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkAP-ClientCode</stringProp>
                 <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
               </elementProp>
             </collectionProp>
@@ -6638,7 +6739,7 @@ def data = new JsonSlurper().parseText(jsonString)
 def savedJsonData = new JsonBuilder(data.Data).toString() //revisar si esto es correcto
 
 vars.put(&quot;formulario&quot;, String.valueOf(savedJsonData));
-vars.put(&quot;formulario&quot;, String.valueOf(data.TokenTransaccion));
+vars.put(&quot;tokenTransaccion&quot;, String.valueOf(data.TokenTransaccion));
 
 
 </stringProp>
@@ -6667,7 +6768,7 @@ vars.put(&quot;formulario&quot;, String.valueOf(data.TokenTransaccion));
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">/rshkapRest.svc/api/procesar_pago</stringProp>
+          <stringProp name="HTTPSampler.path">RshkAPSudameris/rshkapRest.svc/api/procesar_pago</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -6687,6 +6788,18 @@ vars.put(&quot;formulario&quot;, String.valueOf(data.TokenTransaccion));
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
                 <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkAP-ApiKey</stringProp>
+                <stringProp name="Header.value">${X-RshkAP-ApiKey}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkAP-ClientCode</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkAP-TokenTransaccion</stringProp>
+                <stringProp name="Header.value">${tokenTransaccion}</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -6716,12 +6829,12 @@ def deb_account_branch = vars.get(&quot;deb_account_branch&quot;)
 
 jsonFormulario[0].Campos[0].Valor = &quot;0974766649&quot;;
 jsonFormulario[0].Campos[2].Valor = &quot;100000&quot;;
-jsonFormulario[0].Campos[0].Valor = &quot;{\&quot;modulo\&quot;:&quot; + deb_account_modulus +
+jsonFormulario[1].Campos[0].Valor = &quot;{\&quot;modulo\&quot;:&quot; + deb_account_modulus +
 							 &quot;,\&quot;moneda\&quot;:\&quot;&quot; + deb_account_currency +
 							 &quot;\&quot;,\&quot;numeroCuenta\&quot;:\&quot;&quot; + deb_account_number +
 							 &quot;\&quot;,\&quot;sucursal\&quot;:&quot; + deb_account_branch + &quot;}&quot;
 
-jsonFormulario[0].Campos[1].Valor = &quot;debito&quot;
+jsonFormulario[1].Campos[1].Valor = &quot;debito&quot;
 
 def savedData = new JsonBuilder(jsonFormulario).toString() //revisar si esto es correcto
 vars.put(&quot;formulario&quot;, String.valueOf(savedData))</stringProp>
@@ -6866,30 +6979,1335 @@ if(codeError == &quot;NOCTC&quot;){
 </stringProp>
           </JSR223PostProcessor>
           <hashTree/>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="true">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding">UTF-8</stringProp>
-            <stringProp name="filename">/home/jmeter/csv/login.csv</stringProp>
-            <boolProp name="ignoreFirstLine">true</boolProp>
-            <boolProp name="quotedData">false</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
-            <boolProp name="stopThread">true</boolProp>
-            <stringProp name="variableNames">userValue</stringProp>
-          </CSVDataSet>
+        </hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">/home/jmeter/csv/login.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">login.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Transferencias Propias" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">600</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crear Dispositivo" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;clientType&quot;: &quot;${clientType}&quot;,&#xd;
+    &quot;clientVersion&quot;: &quot;${clientVersion}&quot;,&#xd;
+    &quot;device&quot;: {&#xd;
+        &quot;clientType&quot;: &quot;${clientType}&quot;,&#xd;
+        &quot;deviceId&quot;: &quot;${deviceId}&quot;,&#xd;
+        &quot;deviceType&quot;: &quot;Google&quot;,&#xd;
+        &quot;hardwareBrand&quot;: &quot;google&quot;,&#xd;
+        &quot;hardwareModel&quot;: &quot;Pixel XL&quot;,&#xd;
+        &quot;osName&quot;: &quot;NOT FOUND&quot;,&#xd;
+        &quot;osVersion&quot;: &quot;10(SDK_29)&quot;,&#xd;
+        &quot;pushNotificationsToken&quot;: &quot;&quot;&#xd;
+    },&#xd;
+    &quot;ssign&quot;: &quot;${ssign}&quot;,&#xd;
+    &quot;tstamp&quot;: &quot;${tstamp}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/devices/new</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
           <hashTree/>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="false">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding">UTF-8</stringProp>
-            <stringProp name="filename">login.csv</stringProp>
-            <boolProp name="ignoreFirstLine">true</boolProp>
-            <boolProp name="quotedData">false</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
-            <boolProp name="stopThread">true</boolProp>
-            <stringProp name="variableNames">userValue</stringProp>
-          </CSVDataSet>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">java</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.util.UUID;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Date;
+import java.util.Base64;
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+
+String deviceId = vars.get(&quot;deviceId&quot;);
+if (deviceId.equals(&quot;&quot;) || deviceId == null) {
+	deviceId = UUID.randomUUID().toString();
+}
+TimeZone tz = TimeZone.getTimeZone(&quot;UTC&quot;);
+DateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.sss&apos;Z&apos;&quot;); 
+df.setTimeZone(tz);
+String tstamp = df.format(new Date());
+
+String clientSecret = vars.get(&quot;clientSecret&quot;);
+String preHash = deviceId + &quot;##&quot; + tstamp + &quot;##&quot; + clientSecret;
+String hash = MessageDigest.getInstance(&quot;SHA-256&quot;).digest(preHash.getBytes(StandardCharsets.UTF_8));
+String ssign = new String(Base64.getEncoder().encode(hash));
+
+vars.put(&quot;deviceId&quot;, String.valueOf(deviceId));
+vars.put(&quot;tstamp&quot;, String.valueOf(tstamp));
+vars.put(&quot;ssign&quot;, String.valueOf(ssign));
+
+
+</stringProp>
+          </JSR223PreProcessor>
           <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">deviceId</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.deviceId</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="Scope.variable">deviceId</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login de Usuario" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;authType&quot;: &quot;${authType}&quot;,&#xd;
+    &quot;authVersion&quot;: &quot;${authVersion}&quot;,&#xd;
+    &quot;clientType&quot;: &quot;${clientType}&quot;,&#xd;
+    &quot;clientVersion&quot;: &quot;${clientVersion}&quot;,&#xd;
+    &quot;deviceId&quot;: &quot;${deviceId}&quot;,&#xd;
+    &quot;ssign&quot;: &quot;${ssign}&quot;,&#xd;
+    &quot;tstamp&quot;: &quot;${tstamp}&quot;,&#xd;
+    &quot;userType&quot;: &quot;${userType}&quot;,&#xd;
+    &quot;userValue&quot;: &quot;${userValue}&quot;,&#xd;
+    &quot;password&quot;: &quot;${password}&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">java</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+
+String deviceId = vars.get(&quot;deviceId&quot;);
+if (deviceId.equals(&quot;&quot;) || deviceId == null){
+	deviceId = &quot;780b42fa-7f14-4b3f-ae34-3240a52fb677&quot;;
+}
+
+TimeZone tz = TimeZone.getTimeZone(&quot;UTC&quot;);
+DateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.sss&apos;Z&apos;&quot;); 
+df.setTimeZone(tz);
+String tstamp = df.format(new Date());
+
+String userType = vars.get(&quot;userType&quot;);
+if (userType.equals(&quot;&quot;) || userType == null){
+	userType = &quot;DOC_58601&quot;;
+}
+
+
+String userValue = vars.get(&quot;userValue&quot;);
+/*
+if (userValue.equals(&quot;&quot;) || userValue == null){
+	userValue = &quot;784397&quot;;
+}
+*/
+
+String password = vars.get(&quot;password&quot;);
+if (password.equals(&quot;&quot;) || password == null){
+	password = &quot;Sudameris1&quot;;
+}
+
+String clientSecret = vars.get(&quot;clientSecret&quot;);
+String preHash = deviceId + &quot;##&quot; + userType + &quot;##&quot; + userValue + &quot;##&quot; + password + &quot;##&quot; + clientSecret;
+String hash = MessageDigest.getInstance(&quot;SHA-256&quot;).digest(preHash.getBytes(StandardCharsets.UTF_8));
+String ssign = new String(Base64.getEncoder().encode(hash));
+
+vars.put(&quot;deviceId&quot;, String.valueOf(deviceId));
+vars.put(&quot;tstamp&quot;, String.valueOf(tstamp));
+vars.put(&quot;ssign&quot;, String.valueOf(ssign));
+
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">X-RshkMichi-AccessToken;token;type;statusLoginUsuario</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.accessToken;$.s2faEntries[0].token;$.s2faEntries[0].type;$.session.status</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
+
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="S2FA_Pending?" enabled="true">
+          <stringProp name="IfController.condition">&quot;${statusLoginUsuario}&quot; == &quot;S2FA_PENDING&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Validar 2FA" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+  &quot;token&quot;: &quot;${token}&quot;,&#xd;
+  &quot;type&quot;: &quot;${type}&quot;,&#xd;
+  &quot;value&quot;: &quot;${tokenValue}&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/2fa/session/validate</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">vars.put(&quot;token&quot;, String.valueOf(&quot;&quot;));
+vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySamplerProperties">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verifica la sesion" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="X-RshkMichi-AccessToken" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">${X-RshkMichi-AccessToken}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  <stringProp name="Argument.name">X-RshkMichi-AccessToken</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session/${X-RshkMichi-AccessToken}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">operator</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.userInfo.additionalInfo.UserOperators[0].externalId</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySamplerProperties">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugPostProcessor>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login de Operador" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;operator&quot;: &quot;${operator}&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/operator-auth/session</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">X-RshkMichi-AccessToken;token;type;messageLoginOperador</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$.accessToken;$.s2faEntries[0].token;$.s2faEntries[0].type;$.message</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">if(&quot;${messageLoginOperador}&quot; != &quot;notFound&quot;){
+	log.warn(&quot;LOGIN OPERADOR - Error: &quot; + &quot;${messageLoginOperador}&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySamplerProperties">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugPostProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuentas Debito" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="funcionalidad" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">EB_TRANSFERENCIA_CUENTAS_PROPIAS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">funcionalidad</stringProp>
+              </elementProp>
+              <elementProp name="accion" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">DEBITO</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">accion</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def accounts = json.listaCuentas
+def nextAccount = null
+
+if (accounts == null || accounts.size() == 0){
+	log.warn(&quot;CUENTA DEBITO - Sin cuentas&quot;)
+	prev.setResponseOK()
+	prev.setStopThread(true)
+}else{
+	for (int i = 0; i &lt; accounts.size(); i++) {
+		if (accounts[i].moneda.codigo == 6900){
+			nextAccount = i;
+			break;
+		}
+	}
+}
+
+if(nextAccount != null){
+	vars.put(&quot;deb_account_number&quot;, String.valueOf(accounts[nextAccount].numeroCuenta));
+	vars.put(&quot;deb_account_branch&quot;, String.valueOf(accounts[nextAccount].sucursal));
+	vars.put(&quot;deb_account_modulus&quot;, String.valueOf(accounts[nextAccount].modulo));
+	vars.put(&quot;deb_account_currency&quot;, String.valueOf(accounts[nextAccount].moneda.codigo));
+}else{
+	log.warn(&quot;CUENTA DEBITO - Sin cuenta en guaranies&quot;)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuentas Credito" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="funcionalidad" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">EB_TRANSFERENCIA_CUENTAS_PROPIAS</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">funcionalidad</stringProp>
+              </elementProp>
+              <elementProp name="accion" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">CREDITO</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">accion</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">//Agregar validacion que lista no venga null
+
+import groovy.json.JsonSlurper
+
+def deb_account_number = vars.get(&quot;deb_account_number&quot;)
+def deb_account_branch = vars.get(&quot;deb_account_branch&quot;)
+def deb_account_modulus = vars.get(&quot;deb_account_modulus&quot;)
+def deb_account_currency = vars.get(&quot;deb_account_currency&quot;)
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def accounts = json.listaCuentas
+def nextAccount = null
+
+for (int i = 0; i &lt; accounts.size(); i++) {
+	if(accounts[i].moneda.codigo == 6900) {
+		if (String.valueOf(accounts[i].numeroCuenta) != deb_account_number ||
+		    String.valueOf(accounts[i].sucursal) != deb_account_branch || 
+		    String.valueOf(accounts[i].modulo) != deb_account_modulus) {
+		    	
+			nextAccount = i
+			break    	
+		}
+
+	}
+	
+}
+
+if(nextAccount != null){
+	vars.put(&quot;cre_own_account_number&quot;, String.valueOf(accounts[nextAccount].numeroCuenta));
+	vars.put(&quot;cre_own_account_branch&quot;, String.valueOf(accounts[nextAccount].sucursal));
+	vars.put(&quot;cre_own_account_modulus&quot;, String.valueOf(accounts[nextAccount].modulo));
+	vars.put(&quot;cre_own_account_currency&quot;, String.valueOf(accounts[nextAccount].moneda.codigo));
+}else{
+	log.warn(&quot;CUENTA CREDITO - no se encontro una segunda cuenta en guaranies&quot;)
+	prev.setResponseOK()
+	prev.setStopThread(true)
+}
+
+
+
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Registrar" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;datosTransaccion&quot;: {&#xd;
+		&quot;cuentaDebito&quot;: {&#xd;
+			&quot;modulo&quot;: ${deb_account_modulus},&#xd;
+			&quot;moneda&quot;: &quot;${deb_account_currency}&quot;,&#xd;
+			&quot;numeroCuenta&quot;: &quot;${deb_account_number}&quot;,&#xd;
+			&quot;sucursal&quot;: ${deb_account_branch}&#xd;
+		},&#xd;
+		&quot;listaCreditos&quot;: [{&#xd;
+			&quot;concepto&quot;: &quot;Test&quot;,&#xd;
+			&quot;cuentaCredito&quot;: {&#xd;
+				&quot;modulo&quot;: ${cre_own_account_modulus},&#xd;
+				&quot;moneda&quot;: &quot;${cre_own_account_currency}&quot;,&#xd;
+				&quot;numeroCuenta&quot;: &quot;${cre_own_account_number}&quot;,&#xd;
+				&quot;sucursal&quot;: ${cre_own_account_branch}&#xd;
+			},&#xd;
+			&quot;importe&quot;: ${amount},&#xd;
+			&quot;monedaOperacion&quot;: &quot;${currency}&quot;&#xd;
+		}],&#xd;
+		&quot;tipo&quot;: &quot;TRANSFERENCIA_PROPIA&quot;&#xd;
+	},&#xd;
+	&quot;tipo&quot;: &quot;TRANSFERENCIA_PROPIA&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">java</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;amount&quot;, String.valueOf(&quot;1000&quot;));
+vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">tx_token</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Aprobar" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion/${tx_token}/aprobacion</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">approval_token;token_2fa;type_2fa</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.tokenAprobacion;$.infoAdicional.entrada_2fa.token;$.infoAdicional.entrada_2fa.type</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirmar" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+  &quot;token&quot;: &quot;${token_2fa}&quot;,&#xd;
+  &quot;type&quot;: &quot;${type_2fa}&quot;,&#xd;
+  &quot;value&quot;: &quot;${tokenValue}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion/${approval_token}/confirmar</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Comprobante (PDF)" enabled="false">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transacciones/${tx_token}/comprobante</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">login.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">/home/jmeter/csv/login.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Migracion" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crear Dispositivo" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;clientType&quot;: &quot;${clientType}&quot;,&#xd;
+    &quot;clientVersion&quot;: &quot;${clientVersion}&quot;,&#xd;
+    &quot;device&quot;: {&#xd;
+        &quot;clientType&quot;: &quot;${clientType}&quot;,&#xd;
+        &quot;deviceId&quot;: &quot;${deviceId}&quot;,&#xd;
+        &quot;deviceType&quot;: &quot;Google&quot;,&#xd;
+        &quot;hardwareBrand&quot;: &quot;google&quot;,&#xd;
+        &quot;hardwareModel&quot;: &quot;Pixel XL&quot;,&#xd;
+        &quot;osName&quot;: &quot;NOT FOUND&quot;,&#xd;
+        &quot;osVersion&quot;: &quot;10(SDK_29)&quot;,&#xd;
+        &quot;pushNotificationsToken&quot;: &quot;&quot;&#xd;
+    },&#xd;
+    &quot;ssign&quot;: &quot;${ssign}&quot;,&#xd;
+    &quot;tstamp&quot;: &quot;${tstamp}&quot;&#xd;
+}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/devices/new</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">java</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.util.UUID;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+import java.util.Date;
+import java.util.Base64;
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+
+String deviceId = vars.get(&quot;deviceId&quot;);
+if (deviceId.equals(&quot;&quot;) || deviceId == null) {
+	deviceId = UUID.randomUUID().toString();
+}
+TimeZone tz = TimeZone.getTimeZone(&quot;UTC&quot;);
+DateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.sss&apos;Z&apos;&quot;); 
+df.setTimeZone(tz);
+String tstamp = df.format(new Date());
+
+String clientSecret = vars.get(&quot;clientSecret&quot;);
+String preHash = deviceId + &quot;##&quot; + tstamp + &quot;##&quot; + clientSecret;
+String hash = MessageDigest.getInstance(&quot;SHA-256&quot;).digest(preHash.getBytes(StandardCharsets.UTF_8));
+String ssign = new String(Base64.getEncoder().encode(hash));
+
+vars.put(&quot;deviceId&quot;, String.valueOf(deviceId));
+vars.put(&quot;tstamp&quot;, String.valueOf(tstamp));
+vars.put(&quot;ssign&quot;, String.valueOf(ssign));
+
+
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">deviceId</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.deviceId</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="Scope.variable">deviceId</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login de Usuario" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&#xd;
+    &quot;authType&quot;: &quot;${authType}&quot;,&#xd;
+    &quot;authVersion&quot;: &quot;${authVersion}&quot;,&#xd;
+    &quot;clientType&quot;: &quot;${clientType}&quot;,&#xd;
+    &quot;clientVersion&quot;: &quot;${clientVersion}&quot;,&#xd;
+    &quot;deviceId&quot;: &quot;${deviceId}&quot;,&#xd;
+    &quot;ssign&quot;: &quot;${ssign}&quot;,&#xd;
+    &quot;tstamp&quot;: &quot;${tstamp}&quot;,&#xd;
+    &quot;userType&quot;: &quot;${userType}&quot;,&#xd;
+    &quot;userValue&quot;: &quot;${userValue}&quot;,&#xd;
+    &quot;password&quot;: &quot;${password}&quot;&#xd;
+}&#xd;
+</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
+            <stringProp name="scriptLanguage">java</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Base64;
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+
+String deviceId = vars.get(&quot;deviceId&quot;);
+if (deviceId.equals(&quot;&quot;) || deviceId == null){
+	deviceId = &quot;780b42fa-7f14-4b3f-ae34-3240a52fb677&quot;;
+}
+
+TimeZone tz = TimeZone.getTimeZone(&quot;UTC&quot;);
+DateFormat df = new SimpleDateFormat(&quot;yyyy-MM-dd&apos;T&apos;HH:mm:ss.sss&apos;Z&apos;&quot;); 
+df.setTimeZone(tz);
+String tstamp = df.format(new Date());
+
+String userType = vars.get(&quot;userType&quot;);
+if (userType.equals(&quot;&quot;) || userType == null){
+	userType = &quot;DOC_58601&quot;;
+}
+
+
+String userValue = vars.get(&quot;userValue&quot;);
+/*
+if (userValue.equals(&quot;&quot;) || userValue == null){
+	userValue = &quot;784397&quot;;
+}
+*/
+
+String password = vars.get(&quot;password&quot;);
+if (password.equals(&quot;&quot;) || password == null){
+	password = &quot;Sudameris1&quot;;
+}
+
+String clientSecret = vars.get(&quot;clientSecret&quot;);
+String preHash = deviceId + &quot;##&quot; + userType + &quot;##&quot; + userValue + &quot;##&quot; + password + &quot;##&quot; + clientSecret;
+String hash = MessageDigest.getInstance(&quot;SHA-256&quot;).digest(preHash.getBytes(StandardCharsets.UTF_8));
+String ssign = new String(Base64.getEncoder().encode(hash));
+
+vars.put(&quot;deviceId&quot;, String.valueOf(deviceId));
+vars.put(&quot;tstamp&quot;, String.valueOf(tstamp));
+vars.put(&quot;ssign&quot;, String.valueOf(ssign));
+
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="false">
+            <stringProp name="JSONPostProcessor.referenceNames">statusLoginUsuario</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.session.status</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def codeError = json.code
+def statusLoginUsuario = json.session.status
+def STATUS_MIGRACION = &quot;&quot;
+
+if(codeError == &quot;a1001&quot;){
+	log.warn(&quot;Credenciales incorrectas&quot;)
+	prev.setResponseOK()
+	prev.setStopThread(true)
+}
+
+if (statusLoginUsuario == STATUS_MIGRACION){
+	//extraer el migrationId
+	//def migrationId = json.
+	//vars.put(&quot;migrationId&quot;, String.valueOf(migrationId))	
+}
+else {
+	log.warn(&quot;Usuario no valido para realizar la migracion&quot;)
+	prev.setResponseOK()
+	prev.setStopThread(true)	
+}
+
+
+vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
+vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
+
+</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="Migracion" enabled="true"/>
+        <hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">15</stringProp>
+          </LoopController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verificar status migracion" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">${url}</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/async/status/${migrationId}</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">Content-Type</stringProp>
+                    <stringProp name="Header.value">application/json</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+                  </elementProp>
+                  <elementProp name="" elementType="Header">
+                    <stringProp name="Header.name">x-api-key</stringProp>
+                    <stringProp name="Header.value">${X-RshkAP-ApiKey}</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+// extraer el estado de la migracion
+// def migrationStatus = json.
+// def STATUS_MIGRACION_COMPLETA = &quot;&quot;
+
+if (migrationStatus == STATUS_MIGRACION_COMPLETA){
+	prev.setSuccessful(true)
+	prev.setStopThread(true)
+}
+</stringProp>
+              </JSR223PostProcessor>
+              <hashTree/>
+              <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+                <boolProp name="displayJMeterProperties">false</boolProp>
+                <boolProp name="displayJMeterVariables">true</boolProp>
+                <boolProp name="displaySamplerProperties">true</boolProp>
+                <boolProp name="displaySystemProperties">false</boolProp>
+              </DebugPostProcessor>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="4s Delay" enabled="true">
+            <stringProp name="ConstantTimer.delay">4000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Verificar status migracion" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${url}</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/async/status/${migrationId}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">x-api-key</stringProp>
+                  <stringProp name="Header.value">${X-RshkAP-ApiKey}</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+// extraer el estado de la migracion
+// def migrationStatus = json.
+// def STATUS_MIGRACION_COMPLETA = &quot;&quot;
+
+if (migrationStatus == STATUS_MIGRACION_COMPLETA){
+	prev.setSuccessful(true)
+	//prev.setStopThread(true)
+} else {
+	prev.setSuccessful(false)
+	//prev.setStopThread(true)
+}
+</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+              <boolProp name="displayJMeterProperties">false</boolProp>
+              <boolProp name="displayJMeterVariables">true</boolProp>
+              <boolProp name="displaySamplerProperties">true</boolProp>
+              <boolProp name="displaySystemProperties">false</boolProp>
+            </DebugPostProcessor>
+            <hashTree/>
+          </hashTree>
         </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Pago de Tarjeta Terceros - Sin Datos - No se entregaron correctamente los datos - Requiere sobreesfuerzo de qualis" enabled="false">
@@ -9362,731 +10780,6 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Transferencias Propias - Sin Datos - No se entregaron correctamente los datos - Requiere sobreesfuerzo de qualis" enabled="false">
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">1</stringProp>
-        </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
-        <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
-        <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-      </ThreadGroup>
-      <hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transferencias" enabled="false">
-          <boolProp name="TransactionController.includeTimers">false</boolProp>
-          <boolProp name="TransactionController.parent">false</boolProp>
-        </TransactionController>
-        <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuentas Debito" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="funcionalidad" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">EB_TRANSFERENCIA_CUENTAS_PROPIAS</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">funcionalidad</stringProp>
-                </elementProp>
-                <elementProp name="accion" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">DEBITO</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                  <stringProp name="Argument.name">accion</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">deb_account_number;deb_account_branch;deb_account_modulus;deb_account_currency</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.listaCuentas[0].numeroCuenta;$.listaCuentas[0].sucursal;$.listaCuentas[0].modulo;$.listaCuentas[0].moneda.codigo</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Estado Bancos" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/datos-generales-sudameris/datos/bancos</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-          </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Propias" enabled="false">
-            <boolProp name="TransactionController.includeTimers">false</boolProp>
-            <boolProp name="TransactionController.parent">false</boolProp>
-          </TransactionController>
-          <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuenta Credito" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="funcionalidad" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">EB_TRANSFERENCIA_CUENTAS_PROPIAS</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">funcionalidad</stringProp>
-                  </elementProp>
-                  <elementProp name="accion" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">CREDITO</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">accion</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${url}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">api/cuentas-sudameris/cuentas</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
-                <stringProp name="scriptLanguage">groovy</stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">import groovy.json.JsonSlurper
-
-def deb_account_number = vars.get(&quot;deb_account_number&quot;)
-def deb_account_branch = vars.get(&quot;deb_account_branch&quot;)
-def deb_account_modulus = vars.get(&quot;deb_account_modulus&quot;)
-def deb_account_currency = vars.get(&quot;deb_account_currency&quot;)
-
-def jsonString = prev.getResponseDataAsString()
-def json = new JsonSlurper().parseText(jsonString)
-def accounts = json.listaCuentas
-def nextAccount = null
-
-for (int i = 0; i &lt; accounts.size(); i++) {
-	if (accounts[i].moneda.codigo != 6900){
-		if(accounts[i].numeroCuenta != deb_account_number &amp;&amp; 
-		   accounts[i].sucursal != deb_account_branch &amp;&amp;
-		   accounts[i].modulo != deb_account_modulus &amp;&amp;
-		   accounts[i].moneda.codigo != deb_account_currency){
-
-		   	nextAccount = i
-		   	break
-		}
-	}
-}
-
-if(nextAccount != null){
-	vars.put(&quot;cre_own_account_number&quot;, String.valueOf(accounts[nextAccount].numeroCuenta));
-	vars.put(&quot;cre_own_account_branch&quot;, String.valueOf(accounts[nextAccount].sucursal));
-	vars.put(&quot;cre_own_account_modulus&quot;, String.valueOf(accounts[nextAccount].modulo));
-	vars.put(&quot;cre_own_account_currency&quot;, String.valueOf(accounts[nextAccount].moneda.codigo));
-}
-
-
-
-</stringProp>
-              </JSR223PostProcessor>
-              <hashTree/>
-              <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-                <boolProp name="displayJMeterProperties">false</boolProp>
-                <boolProp name="displayJMeterVariables">true</boolProp>
-                <boolProp name="displaySamplerProperties">true</boolProp>
-                <boolProp name="displaySystemProperties">false</boolProp>
-              </DebugPostProcessor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Operacion" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-	&quot;datosTransaccion&quot;: {&#xd;
-		&quot;cuentaDebito&quot;: {&#xd;
-			&quot;modulo&quot;: ${deb_account_modulus},&#xd;
-			&quot;moneda&quot;: &quot;${deb_account_currency}&quot;,&#xd;
-			&quot;numeroCuenta&quot;: &quot;${deb_account_number}&quot;,&#xd;
-			&quot;sucursal&quot;: ${deb_account_branch}&#xd;
-		},&#xd;
-		&quot;listaCreditos&quot;: [{&#xd;
-			&quot;concepto&quot;: &quot;Test&quot;,&#xd;
-			&quot;cuentaCredito&quot;: {&#xd;
-				&quot;modulo&quot;: ${cre_own_account_modulus},&#xd;
-				&quot;moneda&quot;: &quot;${cre_own_account_currency}&quot;,&#xd;
-				&quot;numeroCuenta&quot;: &quot;${cre_own_account_number}&quot;,&#xd;
-				&quot;sucursal&quot;: ${cre_own_account_branch}&#xd;
-			},&#xd;
-			&quot;importe&quot;: ${amount},&#xd;
-			&quot;monedaOperacion&quot;: &quot;${currency}&quot;&#xd;
-		}],&#xd;
-		&quot;tipo&quot;: &quot;TRANSFERENCIA_PROPIA&quot;&#xd;
-	},&#xd;
-	&quot;tipo&quot;: &quot;TRANSFERENCIA_PROPIA&quot;&#xd;
-}&#xd;
-</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${url}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-                <stringProp name="scriptLanguage">java</stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">vars.put(&quot;amount&quot;, String.valueOf(&quot;10000&quot;));
-vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
-              </JSR223PreProcessor>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">tx_token</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-            </hashTree>
-          </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Terceros" enabled="false">
-            <boolProp name="TransactionController.includeTimers">false</boolProp>
-            <boolProp name="TransactionController.parent">false</boolProp>
-          </TransactionController>
-          <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuenta Credito" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="tipoAgenda" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">CUENTAS</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">tipoAgenda</stringProp>
-                  </elementProp>
-                  <elementProp name="subtipo" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">NINGUNO</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">subtipo</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${url}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">api/clientes-sudameris/clientes/agenda</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">cre_tpart_account_number;cre_tpart_account_branch;cre_tpart_account_modulus;cre_tpart_account_currency</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$.agendas[0].agendado.numeroCuenta;$.agendas[0].agendado.sucursal;$.agendas[0].agendado.modulo;$.agendas[0].agendado.moneda.codigo</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-                <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Operacion" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-	&quot;datosTransaccion&quot;: {&#xd;
-		&quot;cuentaDebito&quot;: {&#xd;
-			&quot;modulo&quot;: ${deb_account_modulus},&#xd;
-			&quot;moneda&quot;: &quot;${deb_account_currency}&quot;,&#xd;
-			&quot;numeroCuenta&quot;: &quot;${deb_account_number}&quot;,&#xd;
-			&quot;sucursal&quot;: ${deb_account_branch}&#xd;
-		},&#xd;
-		&quot;listaCreditos&quot;: [{&#xd;
-			&quot;motivoPago&quot;: ${motivoPago},&#xd;
-			&quot;cuentaCredito&quot;: {&#xd;
-				&quot;modulo&quot;: ${cre_tpart_account_modulus},&#xd;
-				&quot;moneda&quot;: &quot;${cre_tpart_account_currency}&quot;,&#xd;
-				&quot;numeroCuenta&quot;: &quot;${cre_tpart_account_number}&quot;,&#xd;
-				&quot;sucursal&quot;: ${cre_tpart_account_branch}&#xd;
-			},&#xd;
-			&quot;importe&quot;: ${amount},&#xd;
-			&quot;monedaOperacion&quot;: &quot;${currency}&quot;&#xd;
-		}],&#xd;
-		&quot;tipo&quot;: &quot;TRANSFERENCIA_TERCEROS&quot;&#xd;
-	},&#xd;
-	&quot;tipo&quot;: &quot;TRANSFERENCIA_TERCEROS&quot;&#xd;
-}&#xd;
-</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${url}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-                <stringProp name="scriptLanguage">java</stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">vars.put(&quot;amount&quot;, String.valueOf(&quot;10000&quot;));
-vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));
-vars.put(&quot;motivoPago&quot;, String.valueOf(&quot;14&quot;));</stringProp>
-              </JSR223PreProcessor>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">tx_token</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-            </hashTree>
-          </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Otros Bancos" enabled="false">
-            <boolProp name="TransactionController.includeTimers">false</boolProp>
-            <boolProp name="TransactionController.parent">false</boolProp>
-          </TransactionController>
-          <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Cuenta Credito" enabled="true">
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="tipoAgenda" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">SIPAP</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">tipoAgenda</stringProp>
-                  </elementProp>
-                  <elementProp name="subtipo" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">NINGUNO</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
-                    <stringProp name="Argument.name">subtipo</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${url}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">api/clientes-sudameris/clientes/agenda</stringProp>
-              <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">cre_otherBank_account_number;cre_otherBank_account_currency;cre_otherBank_account_codeBank;cre_otherBank_account_document_type;cre_otherBank_account_document_number;cre_otherBank_account_denomination</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$.agendas[0].agendado.numeroCuenta;$.agendas[0].agendado.moneda.codigo;$.agendas[0].agendado.codigoBancoCentral;$.agendas[0].agendado.tipoDocumento;$.agendas[0].agendado.numeroDocumento;$.agendas[0].agendado.nombreBeneficiario;</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-                <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound;notFound;notFound</stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-            </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Operacion" enabled="true">
-              <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-              <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-                <collectionProp name="Arguments.arguments">
-                  <elementProp name="" elementType="HTTPArgument">
-                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                    <stringProp name="Argument.value">{&#xd;
-	&quot;datosTransaccion&quot;: {&#xd;
-		&quot;cuentaDebito&quot;: {&#xd;
-			&quot;modulo&quot;: ${deb_account_modulus},&#xd;
-			&quot;moneda&quot;: &quot;${deb_account_currency}&quot;,&#xd;
-			&quot;numeroCuenta&quot;: &quot;${deb_account_number}&quot;,&#xd;
-			&quot;sucursal&quot;: ${deb_account_branch}&#xd;
-		},&#xd;
-		&quot;beneficiarioSipap&quot;: {&#xd;
-			&quot;numeroDocumento&quot;: ${cre_otherBank_account_document_number},&#xd;
-			&quot;monedaCuenta&quot;: ${cre_otherBank_account_currency},&#xd;
-			&quot;cuentaSipap&quot;: ${cre_otherBank_account_number},&#xd;
-			&quot;denominacionCuenta&quot;: &quot;${cre_otherBank_account_denomination}&quot;,&#xd;
-			&quot;tipoDocumento&quot;: ${cre_otherBank_account_document_type},&#xd;
-			&quot;codigoBanco&quot;: ${cre_otherBank_account_codeBank},&#xd;
-			&quot;importe&quot;: ${amount},&#xd;
-			&quot;monedaOperacion&quot;: ${currency}&#xd;
-		},&#xd;
-		&quot;tipo&quot;: &quot;TRANSFERENCIA_SIPAP&quot;,&#xd;
-		&quot;tipoSipap&quot;: &quot;LBTR&quot;&#xd;
-	},&#xd;
-	&quot;tipo&quot;: &quot;TRANSFERENCIA_SIPAP&quot;&#xd;
-}&#xd;
-</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </elementProp>
-              <stringProp name="HTTPSampler.domain">${url}</stringProp>
-              <stringProp name="HTTPSampler.port"></stringProp>
-              <stringProp name="HTTPSampler.protocol">https</stringProp>
-              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-              <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion</stringProp>
-              <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
-            </HTTPSamplerProxy>
-            <hashTree>
-              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-                <collectionProp name="HeaderManager.headers">
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">Content-Type</stringProp>
-                    <stringProp name="Header.value">application/json</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Header">
-                    <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                    <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                  </elementProp>
-                </collectionProp>
-              </HeaderManager>
-              <hashTree/>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="JSR223 PreProcessor" enabled="true">
-                <stringProp name="scriptLanguage">java</stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">String account_number = vars.get(&quot;cre_otherBank_account_number&quot;);
-String cre_otherBank_account_number = account_number.replaceFirst(&quot;^0+(?!$)&quot;, &quot;&quot;);
-
-vars.put(&quot;cre_otherBank_account_number&quot;, String.valueOf(cre_otherBank_account_number));
-vars.put(&quot;amount&quot;, String.valueOf(&quot;10000&quot;));
-vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));
-</stringProp>
-              </JSR223PreProcessor>
-              <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-                <stringProp name="JSONPostProcessor.referenceNames">tx_token</stringProp>
-                <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
-                <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              </JSONPostProcessor>
-              <hashTree/>
-            </hashTree>
-          </hashTree>
-        </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="En Curso" enabled="false">
-          <boolProp name="TransactionController.includeTimers">false</boolProp>
-          <boolProp name="TransactionController.parent">false</boolProp>
-        </TransactionController>
-        <hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Aprobar" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion/${tx_token}/aprobacion</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
-              <stringProp name="JSONPostProcessor.referenceNames">approval_token;token_2fa;type_2fa</stringProp>
-              <stringProp name="JSONPostProcessor.jsonPathExprs">$.tokenAprobacion;$.infoAdicional.entrada_2fa.token;$.infoAdicional.entrada_2fa.type</stringProp>
-              <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
-              <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound</stringProp>
-            </JSONPostProcessor>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Confirmar" enabled="true">
-            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-              <collectionProp name="Arguments.arguments">
-                <elementProp name="" elementType="HTTPArgument">
-                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-  &quot;token&quot;: &quot;${token_2fa}&quot;,&#xd;
-  &quot;type&quot;: &quot;${type_2fa}&quot;,&#xd;
-  &quot;value&quot;: &quot;${tokenValue}&quot;&#xd;
-}</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-              </collectionProp>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transaccion/${approval_token}/confirmar</stringProp>
-            <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
-          </hashTree>
-          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Comprobante (PDF)" enabled="true">
-            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-              <collectionProp name="Arguments.arguments"/>
-            </elementProp>
-            <stringProp name="HTTPSampler.domain">${url}</stringProp>
-            <stringProp name="HTTPSampler.port"></stringProp>
-            <stringProp name="HTTPSampler.protocol">https</stringProp>
-            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">api/transacciones-sudameris/transacciones/${tx_token}/comprobante</stringProp>
-            <stringProp name="HTTPSampler.method">GET</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-            <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          </HTTPSamplerProxy>
-          <hashTree>
-            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
-              <collectionProp name="HeaderManager.headers">
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">Content-Type</stringProp>
-                  <stringProp name="Header.value">application/json</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Header">
-                  <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
-                  <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
-                </elementProp>
-              </collectionProp>
-            </HeaderManager>
-            <hashTree/>
-            <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
-              <boolProp name="displayJMeterProperties">false</boolProp>
-              <boolProp name="displayJMeterVariables">true</boolProp>
-              <boolProp name="displaySamplerProperties">true</boolProp>
-              <boolProp name="displaySystemProperties">false</boolProp>
-            </DebugPostProcessor>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-      </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Transferencias Terceros - Sin Datos - No se entregaron correctamente los datos - Requiere sobreesfuerzo de qualis" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
@@ -10811,9 +11504,42 @@ vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));
             <hashTree/>
           </hashTree>
         </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Estado Bancos" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${url}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">api/datos-generales-sudameris/datos/bancos</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Gestor de Cabecera HTTP" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-AccessToken</stringProp>
+                <stringProp name="Header.value">${X-RshkMichi-AccessToken}</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+        </hashTree>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Ver Árbol de Resultados" enabled="true">
-        <boolProp name="ResultCollector.error_logging">true</boolProp>
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
           <value class="SampleSaveConfiguration">
