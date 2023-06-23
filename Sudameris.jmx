@@ -92,18 +92,19 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <intProp name="LoopController.loops">-1</intProp>
+          <stringProp name="LoopController.loops">2</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">4400</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">120</stringProp>
+        <stringProp name="ThreadGroup.num_threads">8800</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">240</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.delayedStart">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Crear Dispositivo" enabled="true">
@@ -571,7 +572,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1700</stringProp>
+        <stringProp name="ThreadGroup.num_threads">2200</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -7541,7 +7542,7 @@ vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1000</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -7867,14 +7868,11 @@ def migrationMaxAttempts = Integer.parseInt(vars.get(&quot;migrationMaxAttempts&
 def migrationStatus = vars.get(&quot;migrationStatus&quot;)
 def STATUS_MIGRACION_COMPLETA = &quot;FINISHED&quot;
 def STATUS_MIGRACION_ERROR = &quot;ERROR&quot;
-//def validErrors = [&quot;Operador no cuenta con Clave activa para migrar&quot;,&quot;All clients were skipped&quot;, &quot;Cliente-SubjectId inválido&quot;, &quot;INVALID_FIELDS&quot;] as String[]
-def validErrors = [&quot;Operador no cuenta con Clave activa para migrar&quot;,&quot;Error interno al intentar generar perfilamiento del operador&quot;, &quot;All clients were skipped&quot;, &quot;Cliente-SubjectId inválido&quot;, &quot;INVALID_FIELDS&quot;, &quot;Unexpected error trying to create a signature scheme with legacyId&quot;] as String[]
-//&quot;Unexpected error trying to create signature scheme with legacyId&quot;
-//&quot;Unexpected error trying to create a signature scheme with legacyId&quot;
 
-// ultimo error no lo esta ignorando
 
-String errorTrace = vars.get(&quot;errorTrace&quot;) //.replace(&quot;/[\n\t]+/gm&quot;, &quot; &quot;)
+def validErrors = [&quot;Operador no cuenta con Clave activa para migrar&quot;,&quot;Error interno al intentar generar perfilamiento del operador&quot;, &quot;All clients were skipped&quot;, &quot;Cliente-SubjectId inválido&quot;, &quot;INVALID_FIELDS&quot;, &quot;signature scheme with legacyId&quot;] as String[]
+
+String errorTrace = vars.get(&quot;errorTrace&quot;)
 
 log.warn(&quot;Intento &quot; + migrationAttempt + &quot; de &quot; + migrationMaxAttempts)
 
@@ -7953,7 +7951,7 @@ else if (migrationStatus.equals(STATUS_MIGRACION_ERROR) &amp;&amp; !errorTrace.e
           </DebugPostProcessor>
           <hashTree/>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="false">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">/home/jmeter/csv/migracion.csv</stringProp>
@@ -7963,6 +7961,18 @@ else if (migrationStatus.equals(STATUS_MIGRACION_ERROR) &amp;&amp; !errorTrace.e
           <stringProp name="shareMode">shareMode.all</stringProp>
           <boolProp name="stopThread">true</boolProp>
           <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Migracion con contraseña" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">/home/jmeter/csv/migracion.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue,password</stringProp>
         </CSVDataSet>
         <hashTree/>
       </hashTree>
@@ -11457,7 +11467,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Arbol general" enabled="true">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Arbol sin errores" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -11492,6 +11502,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           </value>
         </objProp>
         <stringProp name="filename"></stringProp>
+        <boolProp name="ResultCollector.success_only_logging">true</boolProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Arbol con Errores" enabled="true">
@@ -11538,7 +11549,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <value class="SampleSaveConfiguration">
             <time>true</time>
             <latency>true</latency>
-            <timestamp>false</timestamp>
+            <timestamp>true</timestamp>
             <success>true</success>
             <label>true</label>
             <code>true</code>
@@ -11606,6 +11617,43 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
       </ResultCollector>
       <hashTree/>
       <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
+        <boolProp name="ResultCollector.error_logging">true</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
