@@ -92,14 +92,14 @@
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">2</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">8800</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">240</stringProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -210,12 +210,6 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="script">vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
 
-
-/*
-def threads = ${__groovy(org.apache.jmeter.threads.JMeterContextService.getThreadCounts().activeThreads)}
-
-log.warn(String.valueOf(threads))
-*/
 </stringProp>
           </JSR223PostProcessor>
           <hashTree/>
@@ -541,7 +535,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           </DebugPostProcessor>
           <hashTree/>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="false">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">login.csv</stringProp>
@@ -553,7 +547,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <stringProp name="variableNames">userValue</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="false">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">/home/jmeter/csv/login.csv</stringProp>
@@ -7854,7 +7848,7 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
               <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound</stringProp>
             </JSONPostProcessor>
             <hashTree/>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="OLD - JSR223 PostProcessor" enabled="false">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -7900,6 +7894,35 @@ else if (migrationStatus.equals(STATUS_MIGRACION_ERROR) &amp;&amp; !errorTrace.e
 		prev.setSuccessful(false)
 		prev.setStopThread(true)
 	}
+}</stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="cacheKey">true</stringProp>
+              <stringProp name="script">import groovy.json.JsonSlurper
+
+def jsonString = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(jsonString)
+def migrationAttempt = Integer.parseInt(vars.get(&apos;__jm__MigracionLoop__idx&apos;)) + 1
+def migrationMaxAttempts = Integer.parseInt(vars.get(&quot;migrationMaxAttempts&quot;))
+def migrationStatus = vars.get(&quot;migrationStatus&quot;)
+def STATUS_MIGRACION_COMPLETA = &quot;FINISHED&quot;
+String errorTrace = vars.get(&quot;errorTrace&quot;)
+
+log.warn(&quot;Intento &quot; + migrationAttempt + &quot; de &quot; + migrationMaxAttempts)
+
+def maxAttemptsReached = migrationAttempt == migrationMaxAttempts
+def finishedStatusReached = migrationStatus.equals(STATUS_MIGRACION_COMPLETA)
+def migrationContinue = !maxAttemptsReached &amp;&amp; !finishedStatusReached
+vars.put(&quot;migrationContinue&quot;, String.valueOf(migrationContinue));
+
+if (maxAttemptsReached) {
+	prev.setSuccessful(false)
+	prev.setStopThread(true)
+	vars.put(&quot;maxAttemptErrors&quot;, String.valueOf(${__counter(FALSE,)}))
 }</stringProp>
             </JSR223PostProcessor>
             <hashTree/>
