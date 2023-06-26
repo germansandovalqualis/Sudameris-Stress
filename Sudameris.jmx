@@ -7,9 +7,14 @@
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="Variables definidas por el Usuario" enabled="true">
         <collectionProp name="Arguments.arguments">
+          <elementProp name="urlMigracion" elementType="Argument">
+            <stringProp name="Argument.name">urlMigracion</stringProp>
+            <stringProp name="Argument.value">10.1.46.75</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="url" elementType="Argument">
             <stringProp name="Argument.name">url</stringProp>
-            <stringProp name="Argument.value">test-fu.sudameris.com.py</stringProp>
+            <stringProp name="Argument.value">test.sudameris.com.py</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="url-pds" elementType="Argument">
@@ -57,6 +62,11 @@
             <stringProp name="Argument.value">Sudameris1</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="passwordMigracion" elementType="Argument">
+            <stringProp name="Argument.name">passwordMigracion</stringProp>
+            <stringProp name="Argument.value">123456</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
           <elementProp name="tokenValue" elementType="Argument">
             <stringProp name="Argument.name">tokenValue</stringProp>
             <stringProp name="Argument.value">123456</stringProp>
@@ -87,19 +97,24 @@
             <stringProp name="Argument.value">1190380</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="operadtor" elementType="Argument">
+            <stringProp name="Argument.name">operadtor</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Login" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Controlador Bucle" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
-          <stringProp name="LoopController.loops">2</stringProp>
+          <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <stringProp name="ThreadGroup.num_threads">4000</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">120</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -326,7 +341,7 @@ vars.put(&quot;ssign&quot;, String.valueOf(ssign));
             <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
           </JSONPostProcessor>
           <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
@@ -342,12 +357,12 @@ def STATUS_CREDENCIALES_INCORRECTAS = &quot;a1001&quot;
 
 if(codeError.equals(STATUS_CREDENCIALES_INCORRECTAS)){
 	log.warn(&quot;Credenciales incorrectas&quot;)
-	prev.setResponseOK();
+	prev.setIgnore();
 	prev.setStopThread(true);
 }
 else if(!statusLoginUsuario.equals(STATUS_2FA_PENDING)){
 	log.warn(&quot;El estado del usuario no es &quot; + STATUS_2FA_PENDING)
-	prev.setResponseOK();
+	prev.setIgnore();
 	prev.setStopThread(true);
 }
 
@@ -408,13 +423,31 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
             </collectionProp>
           </HeaderManager>
           <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">message2fa</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.message</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
           <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
             <stringProp name="script">vars.put(&quot;token&quot;, String.valueOf(&quot;&quot;));
-vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
+vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));
+
+String message2fa = vars.get(&quot;message2fa&quot;)
+
+if (message2fa.contains(&quot;Unexpected database error getting data for user with user_type&quot;)){
+	prev.setIgnore()
+	prev.setStopThread(true)
+}
+
+//Unexpected database error getting data for user with user_type
+
+</stringProp>
           </JSR223PostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -456,6 +489,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="JSONPostProcessor.referenceNames">operator</stringProp>
             <stringProp name="JSONPostProcessor.jsonPathExprs">$.userInfo.additionalInfo.UserOperators[0].externalId</stringProp>
             <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">notFound</stringProp>
           </JSONPostProcessor>
           <hashTree/>
           <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
@@ -464,6 +498,51 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <boolProp name="displaySamplerProperties">true</boolProp>
             <boolProp name="displaySystemProperties">false</boolProp>
           </DebugPostProcessor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="script">def operadorValue=vars.get(&quot;operator&quot;) 
+if(operadorValue == &quot;notFound&quot;){
+	def user= vars.get(&quot;userValue&quot;)
+	def nombreArchivo= &quot;/home/jmeter/Scripts/Sudameris-Stress-config1206/usuarioFail.csv&quot;
+	def file= new File(nombreArchivo)
+	def fileWriter
+	if(file.exists()){
+		fileWriter = new FileWriter(file, true)
+	} else{
+		fileWriter = new FileWriter(file)
+	}
+	def bufferedWriter = new BufferedWriter(fileWriter)
+	bufferedWriter.write(user)
+	bufferedWriter.newLine()
+	bufferedWriter.close()
+     log.warn(&quot;LOGIN OPERADOR - Error: &quot; + operadorValue)
+	prev.setResponseOK();
+	prev.setStopThread(true);
+}</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Controller" enabled="false">
+          <stringProp name="IfController.condition">&apos;${__jexl3(&quot;${operator}&quot; == &quot;notFound&quot;)}&apos;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+            <stringProp name="filename">/home/jmeter/Scripts/Sudameris-Stress-config1206/usuarioFail.csv</stringProp>
+            <stringProp name="fileEncoding">UTF-8</stringProp>
+            <stringProp name="variableNames"></stringProp>
+            <boolProp name="ignoreFirstLine">true</boolProp>
+            <stringProp name="delimiter">,</stringProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+          </CSVDataSet>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login de Operador" enabled="true">
@@ -514,14 +593,14 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             <stringProp name="JSONPostProcessor.defaultValues">notFound;notFound;notFound;notFound</stringProp>
           </JSONPostProcessor>
           <hashTree/>
-          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="false">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="parameters"></stringProp>
             <stringProp name="filename"></stringProp>
             <stringProp name="cacheKey">true</stringProp>
             <stringProp name="script">if(&quot;${messageLoginOperador}&quot; != &quot;notFound&quot;){
 	log.warn(&quot;LOGIN OPERADOR - Error: &quot; + &quot;${messageLoginOperador}&quot;)
-	prev.setResponseOK();
+	prev.setIgnore()
 	prev.setStopThread(true);
 }
 </stringProp>
@@ -535,10 +614,22 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           </DebugPostProcessor>
           <hashTree/>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Windows" enabled="false">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">login.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios 2306" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">/home/jmeter/Scripts/Sudameris-Stress-config1206/login2306.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -566,7 +657,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2200</stringProp>
+        <stringProp name="ThreadGroup.num_threads">200</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -7530,13 +7621,13 @@ vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
         </CSVDataSet>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Migracion" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Migracion" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">stopthread</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">1000</stringProp>
+        <stringProp name="ThreadGroup.num_threads">2300</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -7574,7 +7665,7 @@ vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/devices/new</stringProp>
+          <stringProp name="HTTPSampler.path">/api/michi-auth-sudameris/devices/new</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7590,6 +7681,10 @@ vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; x64) AppleWebKit/537.36 (KHTML, like Geko) Chrome/114.0.0.0 Safari/537.36</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -7657,7 +7752,7 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
           </JSR223PostProcessor>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login de Usuario" enabled="true">
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Login de Usuario Migracion" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
             <collectionProp name="Arguments.arguments">
@@ -7673,7 +7768,7 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
     &quot;tstamp&quot;: &quot;${tstamp}&quot;,&#xd;
     &quot;userType&quot;: &quot;${userType}&quot;,&#xd;
     &quot;userValue&quot;: &quot;${userValue}&quot;,&#xd;
-    &quot;password&quot;: &quot;${password}&quot;&#xd;
+    &quot;password&quot;: &quot;${passwordMigracion}&quot;&#xd;
 }&#xd;
 </stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
@@ -7684,7 +7779,7 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
           <stringProp name="HTTPSampler.port"></stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">api/michi-auth-sudameris/auth/session</stringProp>
+          <stringProp name="HTTPSampler.path">/api/michi-auth-sudameris/auth/session</stringProp>
           <stringProp name="HTTPSampler.method">POST</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -7700,6 +7795,14 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
               <elementProp name="" elementType="Header">
                 <stringProp name="Header.name">Content-Type</stringProp>
                 <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-RshkMichi-ApiKey</stringProp>
+                <stringProp name="Header.value">a2cbe634c7ee693c2e80@e5ee4c78-ccab-479c-a21d-296bd282e16e@42e022ec4299713d76b6</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; x64) AppleWebKit/537.36 (KHTML, like Geko) Chrome/114.0.0.0 Safari/537.36</stringProp>
               </elementProp>
             </collectionProp>
           </HeaderManager>
@@ -7738,9 +7841,9 @@ if (userValue.equals(&quot;&quot;) || userValue == null){
 }
 */
 
-String password = vars.get(&quot;password&quot;);
+String password = vars.get(&quot;passwordMigracion&quot;);
 if (password.equals(&quot;&quot;) || password == null){
-	password = &quot;Sudameris1&quot;;
+	password = &quot;123456&quot;;
 }
 
 String clientSecret = vars.get(&quot;clientSecret&quot;);
@@ -7775,17 +7878,17 @@ def codeError = json.code
 def type = vars.get(&quot;type&quot;)
 def STATUS_MIGRACION = &quot;USER_MIGRATION&quot;
 
-if(codeError.equals(&quot;a1001&quot;)){
-	log.warn(&quot;Credenciales incorrectas&quot;)
-	prev.setResponseOK()
-	prev.setStopThread(true)
-}
+//if(codeError.equals(&quot;a1001&quot;)){
+//	log.warn(&quot;Credenciales incorrectas&quot;)
+//	prev.setResponseOK()
+//	prev.setStopThread(true)
+//}
 
-if (!type.equals(STATUS_MIGRACION)){
-	log.warn(&quot;Usuario no valido para realizar la migracion&quot;)
-	prev.setResponseOK()
-	prev.setStopThread(true)	
-}
+//if (!type.equals(STATUS_MIGRACION)){
+//	log.warn(&quot;Usuario no valido para realizar la migracion&quot;)
+//	prev.setResponseOK()
+//	prev.setStopThread(true)	
+//}
 
 vars.put(&quot;tstamp&quot;, String.valueOf(&quot;&quot;));
 vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
@@ -7837,6 +7940,10 @@ vars.put(&quot;ssign&quot;, String.valueOf(&quot;&quot;));
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">x-api-key</stringProp>
                   <stringProp name="Header.value">${X-RshkAP-ApiKey}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">X-RshkMichi-ApiKey</stringProp>
+                  <stringProp name="Header.value">a2cbe634c7ee693c2e80@e5ee4c78-ccab-479c-a21d-296bd282e16e@42e022ec4299713d76b6</stringProp>
                 </elementProp>
               </collectionProp>
             </HeaderManager>
@@ -7974,10 +8081,10 @@ if (maxAttemptsReached) {
           </DebugPostProcessor>
           <hashTree/>
         </hashTree>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="false">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios Linux" enabled="true">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
-          <stringProp name="filename">/home/jmeter/csv/migracion.csv</stringProp>
+          <stringProp name="filename">/home/jmeter/csv/migracion2406.csv</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">false</boolProp>
           <boolProp name="recycle">true</boolProp>
@@ -7986,7 +8093,7 @@ if (maxAttemptsReached) {
           <stringProp name="variableNames">userValue</stringProp>
         </CSVDataSet>
         <hashTree/>
-        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Migracion con contraseña" enabled="true">
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Migracion con contraseña" enabled="false">
           <stringProp name="delimiter">,</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="filename">/home/jmeter/csv/migracion.csv</stringProp>
@@ -11488,6 +11595,255 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
             </JSR223PreProcessor>
             <hashTree/>
           </hashTree>
+        </hashTree>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WEB - Posicion Consolidada" enabled="false">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">2700</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Usuarios 2306" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="filename">/home/jmeter/Scripts/Sudameris-Stress-config1206/login2306.csv</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames">userValue</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies">
+            <elementProp name="michi_device_id" elementType="Cookie" testname="michi_device_id">
+              <stringProp name="Cookie.value">${michi_device_id}</stringProp>
+              <stringProp name="Cookie.domain">test.sudameris.com.py</stringProp>
+              <stringProp name="Cookie.path"></stringProp>
+              <boolProp name="Cookie.secure">true</boolProp>
+              <longProp name="Cookie.expires">0</longProp>
+              <boolProp name="Cookie.path_specified">true</boolProp>
+              <boolProp name="Cookie.domain_specified">true</boolProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+          <boolProp name="CookieManager.controlledByThreadGroup">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Login" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">test.sudameris.com.py</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/sudamerisweb/login</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">unescaped</stringProp>
+            <stringProp name="RegexExtractor.refname">CSRF_TOKEN</stringProp>
+            <stringProp name="RegexExtractor.regex">let CSRF_TOKEN=&quot;([^&quot;]+)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">def valorExtraido = vars.get(&quot;CSRF_TOKEN&quot;)
+log.info(&quot;csrfToken: &quot; + valorExtraido)</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Login" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="userType" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${userType}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">userType</stringProp>
+              </elementProp>
+              <elementProp name="userValue" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${userValue}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">userValue</stringProp>
+              </elementProp>
+              <elementProp name="password" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">Sudameris1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">password</stringProp>
+              </elementProp>
+              <elementProp name="_csrfToken" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${CSRF_TOKEN}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">_csrfToken</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">test.sudameris.com.py</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/sudamerisweb/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">unescaped</stringProp>
+            <stringProp name="RegexExtractor.refname">CSRF_TOKEN</stringProp>
+            <stringProp name="RegexExtractor.regex">let CSRF_TOKEN=&quot;([^&quot;]+)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Extractor de Expresiones Regulares" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">unescaped</stringProp>
+            <stringProp name="RegexExtractor.refname">FAToken</stringProp>
+            <stringProp name="RegexExtractor.regex">input type=&quot;hidden&quot; name=&quot;s2fatoken&quot; value=&quot;([^&quot;]+)&quot;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default"></stringProp>
+            <stringProp name="RegexExtractor.match_number"></stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="JSR223 PostProcessor" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="script">def valorExtraido = vars.get(&quot;CSRF_TOKEN&quot;)
+def token = vars.get(&quot;FAToken&quot;)
+log.info(&quot;csrfToken2: &quot; + valorExtraido)
+log.info(&quot;FAToken: &quot; + token)</stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST 2FA" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="s2fatoken" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${FAToken}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">s2fatoken</stringProp>
+              </elementProp>
+              <elementProp name="value" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">123456</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">value</stringProp>
+              </elementProp>
+              <elementProp name="_csrfToken" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">${CSRF_TOKEN}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                <stringProp name="Argument.name">_csrfToken</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">test.sudameris.com.py</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/sudamerisweb/login/2fa-check</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET HOME" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">test.sudameris.com.py</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/sudamerisweb//home</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <DebugPostProcessor guiclass="TestBeanGUI" testclass="DebugPostProcessor" testname="Debug PostProcessor" enabled="true">
+            <boolProp name="displayJMeterProperties">false</boolProp>
+            <boolProp name="displayJMeterVariables">true</boolProp>
+            <boolProp name="displaySamplerProperties">true</boolProp>
+            <boolProp name="displaySystemProperties">false</boolProp>
+          </DebugPostProcessor>
+          <hashTree/>
         </hashTree>
       </hashTree>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="Arbol sin errores" enabled="true">
