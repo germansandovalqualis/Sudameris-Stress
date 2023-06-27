@@ -97,9 +97,9 @@
             <stringProp name="Argument.value">1190380</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="operadtor" elementType="Argument">
-            <stringProp name="Argument.name">operadtor</stringProp>
-            <stringProp name="Argument.value"></stringProp>
+          <elementProp name="forceRefresh" elementType="Argument">
+            <stringProp name="Argument.name">forceRefresh</stringProp>
+            <stringProp name="Argument.value">false</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -113,7 +113,7 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">4000</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1700</stringProp>
         <stringProp name="ThreadGroup.ramp_time">120</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -657,7 +657,7 @@ if(operadorValue == &quot;notFound&quot;){
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">200</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1500</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -1338,7 +1338,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1400,7 +1400,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1462,7 +1462,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1524,7 +1524,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1586,7 +1586,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1648,7 +1648,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1710,7 +1710,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1772,7 +1772,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1834,7 +1834,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -1896,7 +1896,7 @@ if (message2fa.contains(&quot;Unexpected database error getting data for user wi
                 </elementProp>
                 <elementProp name="forceRefresh" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.value">${forceRefresh}</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                   <boolProp name="HTTPArgument.use_equals">true</boolProp>
                   <stringProp name="Argument.name">forceRefresh</stringProp>
@@ -6729,7 +6729,7 @@ if(codeError == &quot;NOCTC&quot;){
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">10</stringProp>
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
         <stringProp name="ThreadGroup.ramp_time">10</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -7627,7 +7627,7 @@ vars.put(&quot;currency&quot;, String.valueOf(&quot;6900&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2300</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1700</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
@@ -11603,7 +11603,7 @@ vars.put(&quot;type&quot;, String.valueOf(&quot;&quot;));</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">2700</stringProp>
+        <stringProp name="ThreadGroup.num_threads">1666</stringProp>
         <stringProp name="ThreadGroup.ramp_time">60</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
